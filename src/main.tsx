@@ -1,6 +1,6 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { useState } from 'react';
+// import { useState } from 'react';
 import './sv.css'
 // import App from './App.tsx'
 
@@ -10,13 +10,19 @@ createRoot(document.getElementById('root')!).render(
   </StrictMode>,
 )
 
+let superCount = [0];
+
 function MyButton() {
-    const [count, setCount] = useState(0)
     
-    const handleclick = () => setCount(count + 1);
+    const handleclick = () => {
+        superCount[0] = superCount[0] + 1;
+        console.log(superCount[0]);
+    }
 
     return (
-        <button className={String(count)} onClick={handleclick}>I'm a button! {count}</button>
+        <button className={String(superCount[0])} onClick={handleclick}>
+            I'm a button! {superCount[0]}
+        </button>
     )
 }
 
