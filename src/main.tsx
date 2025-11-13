@@ -1,6 +1,6 @@
-import { StrictMode } from 'react';
+import { StrictMode, type MouseEventHandler } from 'react';
 import { createRoot } from 'react-dom/client';
-// import { useState } from 'react';
+import { useState } from 'react';
 import './sv.css'
 // import App from './App.tsx'
 
@@ -10,34 +10,25 @@ createRoot(document.getElementById('root')!).render(
   </StrictMode>,
 )
 
-let superCount = [0];
-
-function MyButton() {
-    
-    const handleclick = () => {
-        superCount[0] = superCount[0] + 1;
-        console.log(superCount[0]);
-    }
+function MyButton({count, clickFunc: f}: {count: number, clickFunc: MouseEventHandler}) {
 
     return (
-        <button className={String(superCount[0])} onClick={handleclick}>
-            I'm a button! {superCount[0]}
-        </button>
+        <button className={String(count)} onClick={f}>I'm a button! {count}</button>
     )
 }
 
 function MyApp() {
+    const [count, setter] = useState(0);
+
+    const increment = () => setter(count + 1);
+
     return (
         <div className='boring'>
-          <h2>What a great app!</h2>
-          <p>How is <br/><br/> ze life?</p>
-          <MyButton />
-          <MyButton />
-          <MyButton />
-          <DataList />
-          <MyButton />
-          <MyButton />
-          <MyButton />
+        <h2>What a great app!</h2>
+        <p>How is <br/><br/> ze life?</p>
+        <MyButton count={count} clickFunc={increment} />
+        <MyButton count={count} clickFunc={increment} />
+        <MyButton count={count} clickFunc={increment} />
         </div>
     )
 }
