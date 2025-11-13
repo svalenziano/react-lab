@@ -1,5 +1,6 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { useState } from 'react';
 import './sv.css'
 // import App from './App.tsx'
 
@@ -10,8 +11,9 @@ createRoot(document.getElementById('root')!).render(
 )
 
 function MyButton() {
-    const count = 0;
-    const handleclick = () => console.log("I'm clicked!");
+    const [count, setCount] = useState(0)
+    
+    const handleclick = () => setCount(count + 1);
 
     return (
         <button className={String(count)} onClick={handleclick}>I'm a button! {count}</button>
