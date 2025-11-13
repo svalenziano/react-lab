@@ -9,6 +9,17 @@ createRoot(document.getElementById('root')!).render(
   </StrictMode>,
 )
 
+function MyButton() {
+    return (
+        <button>I'm a button!</button>
+    )
+}
+
 function MyApp() {
-    return "Hello world"
+    return (
+        <div>
+          <h2>What a great app!</h2>
+          <MyButton />
+        </div>
+    )
 }
