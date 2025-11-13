@@ -10,8 +10,9 @@ createRoot(document.getElementById('root')!).render(
 )
 
 function MyButton() {
+    let count = 0;
     return (
-        <button>I'm a button!</button>
+        <button className={String(count)}>I'm a button! {count}</button>
     )
 }
 
@@ -21,6 +22,22 @@ function MyApp() {
           <h2>What a great app!</h2>
           <p>How is <br/><br/> ze life?</p>
           <MyButton />
+          <DataList />
         </div>
+    )
+}
+
+const stuff = [
+    {place: "Durham, NC", data: 1234},
+    {place: "Paris, France", data: 4567},
+    {place: "Taipei, Taiwan", data: 8901},
+]
+
+function DataList() {
+    const items = stuff.map(i => <li>{i.place}</li>);
+    return (
+        <ul>
+          {items}
+        </ul>
     )
 }
