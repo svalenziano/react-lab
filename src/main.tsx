@@ -26,7 +26,12 @@ function MyApp() {
           <h2>What a great app!</h2>
           <p>How is <br/><br/> ze life?</p>
           <MyButton />
+          <MyButton />
+          <MyButton />
           <DataList />
+          <MyButton />
+          <MyButton />
+          <MyButton />
         </div>
     )
 }
