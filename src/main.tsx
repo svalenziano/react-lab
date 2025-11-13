@@ -10,9 +10,11 @@ createRoot(document.getElementById('root')!).render(
 )
 
 function MyButton() {
-    let count = 0;
+    const count = 0;
+    const handleclick = () => console.log("I'm clicked!");
+
     return (
-        <button className={String(count)}>I'm a button! {count}</button>
+        <button className={String(count)} onClick={handleclick}>I'm a button! {count}</button>
     )
 }
 
@@ -34,7 +36,7 @@ const stuff = [
 ]
 
 function DataList() {
-    const items = stuff.map(i => <li>{i.place}</li>);
+    const items = stuff.map(i => <li>{i.place} 👉 {i.data} </li>);
     return (
         <ul>
           {items}
