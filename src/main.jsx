@@ -18,10 +18,7 @@ function MyForm() {
   const [person, setPerson] = useState(dPerson);
 
   function handleChange(ev) {
-    setPerson({
-      ...person,
-      [ev.target.name]: ev.target.value
-    })
+    person[ev.target.name] = ev.target.value;
   }
 
     return (
