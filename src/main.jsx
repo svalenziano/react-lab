@@ -1,6 +1,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { useState } from 'react';
+import { useImmer } from 'use-immer';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -15,10 +16,12 @@ function MyForm() {
     color: "blue",
   }
 
-  const [person, setPerson] = useState(dPerson);
+  const [person, setPerson] = useImmer(dPerson);
 
   function handleChange(ev) {
-    person[ev.target.name] = ev.target.value;
+    setPerson(p => {
+      p[ev.target.name] = ev.target.value;
+    })
   }
 
     return (
