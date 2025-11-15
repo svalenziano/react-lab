@@ -4,38 +4,47 @@ import { useState } from 'react';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-  <RequestTracker />
+    <MyForm />
   </StrictMode>,
 )
 
-export default function RequestTracker() {
-  const [pending, setPending] = useState(0);
-  const [completed, setCompleted] = useState(0);
+function MyForm() {
 
-  async function handleClick() {
-    setPending(p => p + 1);
-    await delay(3000); 
-    setPending(p => p - 1);  
-    setCompleted(c => c + 1); 
+  const dPerson = {
+    name: "Your Name",
+    color: "blue",
   }
 
-  return (
-    <>
-      <h3>
-        Pending: {pending}
-      </h3>
-      <h3>
-        Completed: {completed}
-      </h3>
-      <button onClick={handleClick}>
-        Buy     
-      </button>
-    </>
-  );
-}
+  const [person, setPerson] = useState(dPerson);
 
-function delay(ms) {
-  return new Promise(resolve => {
-    setTimeout(resolve, ms);
-  });
+  function handleChange(ev) {
+    setPerson({
+      ...person,
+      [ev.target.name]: ev.target.value
+    })
+  }
+
+    return (
+      <form>
+        <input 
+          type="text"
+          name="name"
+          placeholder="Name?"
+          value={person.name}
+          onChange={handleChange}
+        />
+        <input 
+          type="text"
+          name="color"
+          placeholder="Color?"
+          value={person.color}
+          onChange={handleChange}
+        />
+        <p>
+          Hello {person.name}! 
+          Your favorite color is 
+          <span style={{color: person.color}}> {person.color} </span>
+        </p>
+      </form>
+    )
 }
