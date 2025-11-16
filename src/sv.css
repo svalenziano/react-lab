@@ -1,3 +1,13 @@
+body {
+  background-color: rgb(112, 112, 112);
+}
+
 .boring {
   font-family: 'Courier New', Courier, monospace;
+}
+
+form,
+label,
+input {
+  display: block;
 }
