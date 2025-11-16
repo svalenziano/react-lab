@@ -26,7 +26,7 @@ Connect event handlers?
 */
 
 function FlexiInput({editMode=false, value="", name="", onChange}) {
-  if (editMode) return <b>{value}</b>
+  if (editMode) return <b>{value.trim()}</b>
   else return <input type="text" name={name} value={value} onChange={onChange} />
 }
 
@@ -54,18 +54,27 @@ function App() {
     <form onSubmit={handleModeToggle}>
       <label>
         First name:{' '}
-        <b>{formState.first}</b>
-        <input type="text" name="first" onChange={handleChange}/>
+        <FlexiInput 
+          editMode={editMode} 
+          value={formState.first} 
+          name="first" 
+          onChange={handleChange} 
+        />
       </label>
       <label>
         Last name:{' '}
-        <b>Jacobs</b>
-        <input />
+        <FlexiInput 
+          editMode={editMode} 
+          value={formState.last} 
+          name="last" 
+          onChange={handleChange} 
+        />
+
       </label>
       <button type="submit">
         {editMode ? "Save Profile" : "Edit Profile"}
       </button>
-      <p><i>Hello, Jane Jacobs!</i></p>
+      <p><i>{`Hello ${formState.first} ${formState.last}!`}</i></p>
     </form>
   );
 }
